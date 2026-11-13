@@ -1,0 +1,103 @@
+{
+  "targetId": "spec-driven-dev",
+  "label": "Spec-driven development",
+  "question": "Does spec-driven AI development produce more maintainable software than chat-driven prompting?",
+  "snapshots": [
+    {
+      "id": "snap-seed-0",
+      "targetId": "spec-driven-dev",
+      "capturedAt": "2026-11-13T03:28:12.777Z",
+      "docs": [
+        {
+          "id": "d00-kiro-dev",
+          "url": "https://kiro.dev/docs/specs/",
+          "host": "kiro.dev",
+          "title": "Specs — Kiro Docs",
+          "fetchedAt": "2026-11-13T03:28:12.775Z",
+          "markdown": "# Specs\n\nSpecs or specifications are structured artifacts that formalize the development process for features and bug fixes in your application. They provide a systematic approach to transform high-level ideas into detailed implementation plans with clear tracking and accountability.\n\nWith Kiro's specs, you can break down requirements into user stories with acceptance criteria, build design docs with sequence diagrams and architecture plans, track implementation progress across discrete tasks, and collaborate effectively between product and engineering teams.\n\nEvery spec generates three key files that form the foundation of your specification. The requirements file captures user stories, acceptance criteria, or bug analysis in structured notation. The design file documents technical architecture, sequence diagrams, and implementation considerations. The tasks file provides a detailed implementation plan with discrete, trackable tasks.\n\nAll specs follow a three-phase workflow that transforms your idea into executable implementation, which ensures the intent behind a feature is recorded before any code is written.\n\nKiro provides a task execution interface for tasks files that displays real-time status updates. Tasks are updated as in-progress or completed, allowing you to efficiently track implementation progress across a team.\n\nWhen you run all tasks on a spec, Kiro analyzes your task list, figures out which tasks depend on each other, and runs independent tasks concurrently. For most feature specs, this cuts execution time significantly without any setup, which improves velocity without additional configuration cost.\n\nKiro builds a dependency graph of the tasks in your tasks file and groups independent tasks into waves. Waves execute sequentially while tasks within a wave execute concurrently, so the tooling parallelises work that a developer would otherwise serialise by hand.\n\nFor building new features and capabilities in your application, Feature Specs guide you through requirements gathering, technical design, and implementation planning with two workflow variants. For well-understood features you can also use Quick Spec to auto-generate all three artifacts without approval gates.\n\nFor systematically diagnosing and fixing bugs with surgical precision while preventing regressions, Bugfix Specs help you identify root causes, design fixes, and validate that nothing else breaks, which prevents the regression problem that unstructured prompting often introduces.\n\nAnalyze Requirements catches inconsistencies, ambiguities, and gaps in your requirements before design, so a specification problem is found early rather than after implementation.\n"
+        }
+      ],
+      "fragments": [
+        {
+          "id": "d00-kiro-dev-f0",
+          "docId": "d00-kiro-dev",
+          "text": "For most feature specs, this cuts execution time significantly without any setup, which improves velocity without additional configuration cost.",
+          "charStart": 1500,
+          "charEnd": 1644
+        },
+        {
+          "id": "d00-kiro-dev-f1",
+          "docId": "d00-kiro-dev",
+          "text": "For systematically diagnosing and fixing bugs with surgical precision while preventing regressions, Bugfix Specs help you identify root causes, design fixes, and validate that nothing else breaks, which prevents the regression problem that unstructured prompting often introduces.",
+          "charStart": 2224,
+          "charEnd": 2504
+        },
+        {
+          "id": "d00-kiro-dev-f2",
+          "docId": "d00-kiro-dev",
+          "text": "Specs or specifications are structured artifacts that formalize the development process for features and bug fixes in your application.",
+          "charStart": 9,
+          "charEnd": 144
+        },
+        {
+          "id": "d00-kiro-dev-f3",
+          "docId": "d00-kiro-dev",
+          "text": "With Kiro's specs, you can break down requirements into user stories with acceptance criteria, build design docs with sequence diagrams and architecture plans, track implementation progress across discrete tasks, and collaborate effectively between product and engineering teams.",
+          "charStart": 286,
+          "charEnd": 565
+        }
+      ],
+      "claims": [
+        {
+          "id": "d00-kiro-dev-c0",
+          "text": "For most feature specs, this cuts execution time significantly without any setup, which improves velocity without additional configuration cost.",
+          "stance": "support",
+          "confidence": 0.57,
+          "fragmentIds": [
+            "d00-kiro-dev-f0"
+          ],
+          "tags": [
+            "velocity",
+            "cost"
+          ]
+        },
+        {
+          "id": "d00-kiro-dev-c1",
+          "text": "For systematically diagnosing and fixing bugs with surgical precision while preventing regressions, Bugfix Specs help you identify root causes, design fixes, and validate that nothing else breaks, which prevents the regression problem that unstructured prompting often introduces.",
+          "stance": "neutral",
+          "confidence": 0.28,
+          "fragmentIds": [
+            "d00-kiro-dev-f1"
+          ],
+          "tags": [
+            "general"
+          ]
+        },
+        {
+          "id": "d00-kiro-dev-c2",
+          "text": "Specs or specifications are structured artifacts that formalize the development process for features and bug fixes in your application.",
+          "stance": "neutral",
+          "confidence": 0.35,
+          "fragmentIds": [
+            "d00-kiro-dev-f2"
+          ],
+          "tags": [
+            "general"
+          ]
+        },
+        {
+          "id": "d00-kiro-dev-c3",
+          "text": "With Kiro's specs, you can break down requirements into user stories with acceptance criteria, build design docs with sequence diagrams and architecture plans, track implementation progress across discrete tasks, and collaborate effectively between product and engineering teams.",
+          "stance": "neutral",
+          "confidence": 0.35,
+          "fragmentIds": [
+            "d00-kiro-dev-f3"
+          ],
+          "tags": [
+            "team-consistency"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Design system guard",
+  "description": "Reviews new component markup against .kiro/steering/design.md so the UI cannot drift into generic AI defaults under time pressure.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["components/**/*.tsx", "app/**/*.tsx"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Check the edited file against .kiro/steering/design.md. Flag only concrete violations: hardcoded hex colours instead of theme tokens, drop shadows, gradient text, spacing values outside the 4px scale, a second border weight, more than one --c-signal element in a single viewport, or more than two font weights. Report the violations as a short list with line numbers. Do not restyle the file yourself unless told to."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Typecheck on save",
+  "description": "After any TS/TSX edit, run the typechecker and fix only genuine type errors. Prevents a broken build being discovered minutes before judging.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["app/**/*.ts", "app/**/*.tsx", "components/**/*.tsx", "lib/**/*.ts"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Run `npm run typecheck`. If it fails, fix only the type errors introduced by the edit that triggered this hook. Do not refactor, do not rename, do not add features. If a fix would require a design decision, stop and report the error instead of guessing."
+  }
+}

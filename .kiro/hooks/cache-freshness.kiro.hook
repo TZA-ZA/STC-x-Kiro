@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "Cache freshness guard",
+  "description": "When a scrape target changes, the committed cache is now out of date with the code that reads it. This catches the classic demo-day failure where the pipeline expects fields the cached JSON does not have.",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["lib/firecrawl/targets.ts", "lib/firecrawl/types.ts"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A scrape target or its types changed. Check every file in data/cache against the current types in lib/firecrawl/types.ts. If any cached snapshot no longer satisfies the types, say so explicitly and tell me to run `npm run scrape` before building. Do not silently regenerate the cache — a scrape costs credits and may need an API key."
+  }
+}
