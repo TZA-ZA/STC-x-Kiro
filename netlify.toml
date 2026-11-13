@@ -1,0 +1,21 @@
+# Primary demo target. The GitHub Pages export (npm run build:pages) is
+# the backup and is configured in next.config.ts instead.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Cache-only by default so a deploy can never depend on a live scrape
+  # succeeding. Flip to "1" in the Netlify UI to demo live extraction.
+  NEXT_PUBLIC_LIVE_MODE = "0"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
