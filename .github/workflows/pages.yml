@@ -1,0 +1,66 @@
+name: Deploy to GitHub Pages
+
+# The backup demo target. Builds the fully static export and publishes it
+# to Pages on every push to main, so there is always a second live URL
+# that does not depend on Netlify being healthy on the day.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it — a half-published
+# Pages site is worse than a slightly stale one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      # No FIRECRAWL_API_KEY here on purpose. The static export reads the
+      # committed cache in data/cache, so the build is reproducible and
+      # cannot fail because of a scrape quota or a dead source URL.
+      - name: Build static export
+        run: npm run build:pages
+        env:
+          NEXT_PUBLIC_LIVE_MODE: "0"
+
+      # Pages' default Jekyll processing strips _next/, which is where
+      # every asset lives. Without this the site loads completely unstyled.
+      - name: Disable Jekyll
+        run: touch out/.nojekyll
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
